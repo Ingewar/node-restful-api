@@ -2,9 +2,16 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 const productRoutes = require('./api/routes/products');
 const ordersRoutes = require('./api/routes/orders');
+
+//TODO: investigate how to get access to nodemon.json data
+console.log('PASSWORD ', process.env.MONGO_ATLASS_PW)
+mongoose.connect('mongodb+srv://ingewar:qSi3FKJwwPyxi3tk@cluster0-csq6s.mongodb.net/test?retryWrites=true',
+{ useNewUrlParser: true }
+);
 
 //morgan used for logging 
 app.use(morgan('dev'));
